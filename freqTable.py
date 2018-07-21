@@ -15,6 +15,9 @@ class FreqTable:
 
         l = len(word)
         for i in range(l):
+            # Inital testing shows standard python idiom of
+            # d[key] = d.get(key, 0) + 1
+            # is significantly slower. More testing could be done later.
             if word[i] in self.singles:
                 self.singles[word[i]] += 1
             else:
