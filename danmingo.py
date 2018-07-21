@@ -2,7 +2,7 @@
 #
 # William Ruppenthal, July 2018
 
-import freqTable
+from freqTable import FreqTable
 import time
 start_time = time.time()
 
@@ -11,7 +11,7 @@ with open('/usr/share/dict/words', 'r') as f:
     words = f.read().splitlines()
 
 # Build frequency table
-freq_table = freqTable.FreqTable(words)
+freq_table = FreqTable(words)
 print(freq_table.singles)
 #print(freq_table.doubles)
 #print(freq_table.triples)
