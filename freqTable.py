@@ -7,7 +7,8 @@ class FreqTable:
         self.doubles = dict()
         self.triples = dict()
 
-        [self.parse_word(w) for w in words]
+        # Don't care about case; upper is better for legibility
+        [self.parse_word(w.upper()) for w in words]
 
     def parse_word(self, word):
         """Parse word for single letters, doubles, and triplets."""
