@@ -14,6 +14,11 @@ class FreqTable:
         # Don't care about case; upper is better for legibility
         [self.parse_word(w.upper()) for w in words]
 
+        # Form full dictionary
+        self.all = dict(self.triples, **self.doubles)
+        # Update is slower so use the presumably smallest dictionary
+        self.all.update(self.singles) 
+
     def parse_word(self, word):
         """Parse word for single letters, doubles, and triplets."""
 
