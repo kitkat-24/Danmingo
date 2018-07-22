@@ -14,6 +14,12 @@ class FreqTable:
         # Don't care about case; upper is better for legibility
         [self.parse_word(w.upper()) for w in words]
 
+        # Lazily get rid of non-letters. So far they've only come up
+        # significantly in the single letters (since we grab all of those)
+        keys_to_remove = [k if not k.isalpha() else None for k in self.singles.keys()]
+        for k in keys_to_remove:
+            self.singles.pop(k, None)
+
         # Form full dictionary
         self.all = dict(self.triples, **self.doubles)
         # Update is slower so use the presumably smallest dictionary

@@ -33,7 +33,10 @@ class Danmingo:
                            key=lambda tup: tup[1], reverse = True)
         
         for elem in top_picks:
-            print("{}: {}".format(elem[0], elem[1]))
+            print("{}: {}, {:.3f}%".format(elem[0], elem[1], 100*ft.all[elem[0]][1]))
+        # Not gonna like, I'm proud of this line
+        total_percent = sum([ft.all[i[0]][1] for i in top_picks])*100
+        print("Total percentage covered by top 52 elements: {:.3f}%".format(total_percent))
 
     
 
