@@ -19,6 +19,11 @@ class FreqTable:
         # Update is slower so use the presumably smallest dictionary
         self.all.update(self.singles) 
 
+        # Calculate actual frequency
+        self.total = sum(self.all.values())
+        [self.calc_freq(k) for k in self.all.keys()]
+
+
     def parse_word(self, word):
         """Parse word for single letters, doubles, and triplets."""
 
@@ -32,3 +37,5 @@ class FreqTable:
                 if i + 2 < l: # Nest if since only valid if previous if is
                     self.triples[word[i:i+3]] += 1
 
+    def calc_freq(self, key):
+        self.all[key] = (self.all[key], self.all[key]/self.total)
