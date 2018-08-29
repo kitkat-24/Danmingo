@@ -3,6 +3,8 @@
 # William Ruppenthal, July 2018
 
 import operator
+import re
+import string
 import time
 
 from freqTable import FreqTable
@@ -36,6 +38,7 @@ class Danmingo:
         total_percent = sum([ft.all[i[0]][1] for i in top_picks])*100
         print("Total percentage covered by top 52 elements: {:.3f}%".format(total_percent))
 
+
     def process_dictionary(self):
         """Load the system dictionary and run frequency analysis on it."""
 
@@ -46,12 +49,15 @@ class Danmingo:
         # Process
         self.process_file(words)
 
+
     def process_text(self, filename):
         """Load a single .txt file and run frequency analysis on it."""
+        regex = re.compile('[%s]' % re.escape(string.punctuation))
 
         # Load file
         with open(filename, 'r') as f:
-            words = f.read().splitlines()
+            # Strip punctuation and split by word
+            words = regex.sub('', f.read()).split()
 
         # Process
         self.process_file(words)
