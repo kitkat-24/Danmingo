@@ -13,13 +13,11 @@ class Danmingo:
         # Nothing to do here for now
         self.dict_string = '/usr/share/dict/words'
 
-    def process_dictionary(self):
-        """Load the system dictionary and run frequency analysis on it."""
-
-        # Load dictionary
-        with open(self.dict_string, 'r') as f:
-            words = f.read().splitlines()
         
+    def process_file(self, words):
+        """Given a list of words, build a frequency table and do some simple
+        analysis."""
+
         # Build frequency table
         ft = FreqTable(words)
         
@@ -38,12 +36,33 @@ class Danmingo:
         total_percent = sum([ft.all[i[0]][1] for i in top_picks])*100
         print("Total percentage covered by top 52 elements: {:.3f}%".format(total_percent))
 
+    def process_dictionary(self):
+        """Load the system dictionary and run frequency analysis on it."""
+
+        # Load dictionary
+        with open(self.dict_string, 'r') as f:
+            words = f.read().splitlines()
+
+        # Process
+        self.process_file(words)
+
+    def process_text(self, filename):
+        """Load a single .txt file and run frequency analysis on it."""
+
+        # Load file
+        with open(filename, 'r') as f:
+            words = f.read().splitlines()
+
+        # Process
+        self.process_file(words)
+
     
 
 if __name__ == "__main__":
     start_time = time.time()
 
     dan = Danmingo()
-    dan.process_dictionary()
+    #dan.process_dictionary()
+    dan.process_text("data/texts/dewey.txt")
 
     print("--- %s seconds ---" % (time.time() - start_time))
