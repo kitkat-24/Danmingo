@@ -26,5 +26,5 @@ more clearly, and maybe a basic GUI.
 Comparing the results between different data sets would be good too.
 
 Finally, building a scraper to run on Twitter/Facebook so we can compare
-dictionary and literature to modern speech on social media.                                                                         
+dictionary and literature to modern speech on social media.
              
