@@ -13,5 +13,18 @@ theoretically allows for the fastest possible handwriting.
 
 Usage
 =====
-This is going to be changing frequently for now since the project is just
-starting out.
+For now, the usage is just running `danmingo.py` in Python 3. You can tweak the
+main to run whatever you want, and you'll have to change the system dictionary
+string if you're not on MacOS (well, it'll probably work on Linux too).
+
+
+Plans
+=====
+My next step is probably adding some graphics that display the results a little
+more clearly, and maybe a basic GUI. 
+
+Comparing the results between different data sets would be good too.
+
+Finally, building a scraper to run on Twitter/Facebook so we can compare
+dictionary and literature to modern speech on social media.                                                                         
+             
