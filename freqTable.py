@@ -2,7 +2,7 @@ from collections import defaultdict
 
 
 class FreqTable:
-    """Take a list of words, then build it into frequency tables for single 
+    """Take a list of words, then build it into frequency tables for single
     letters, doubles, and triplets."""
 
     def __init__(self, words):
@@ -23,7 +23,7 @@ class FreqTable:
         # Form full dictionary
         self.all = dict(self.triples, **self.doubles)
         # Update is slower so use the presumably smallest dictionary
-        self.all.update(self.singles) 
+        self.all.update(self.singles)
 
         # Calculate actual frequency
         self.total = sum(self.all.values())

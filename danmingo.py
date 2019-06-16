@@ -22,23 +22,23 @@ class Danmingo:
     def debug(self, msg):
         if self.debug_true:
             print('DEBUG: {}'.format(msg))
-        
+
     def process(self, words):
         """Given a list of words, build a frequency table and do some simple
         analysis."""
 
         # Build frequency table
         ft = FreqTable(words)
-        
+
         # By default, will sort in ascending order, which gives us lowest frequency
         # items first (don't want)
         #whole_sorted = sorted(ft.all.items(), key=lambda kv: kv[1], reverse=True)
-        non_singles = sorted(list(ft.doubles.items()) + list(ft.triples.items()), 
+        non_singles = sorted(list(ft.doubles.items()) + list(ft.triples.items()),
                              key=lambda kv: kv[1], reverse = True)
         stop = 26 if len(non_singles) >= 26 else len(non_singles)
         top_picks = sorted(list(ft.singles.items()) + list(non_singles[0:stop]),
                            key=lambda tup: tup[1], reverse = True)
-        
+
         for elem in top_picks:
             print("{}: {}, {:.3f}%".format(elem[0], elem[1], 100*ft.all[elem[0]][1]))
         # Not gonna lie, I'm proud of this line
@@ -84,7 +84,7 @@ class Danmingo:
         # Process
         self.process(words)
 
-    
+
 
 if __name__ == "__main__":
     start_time = time.time()
