@@ -29,7 +29,6 @@ class FreqTable:
         self.total = sum(self.all.values())
         [self.calc_freq(k) for k in self.all.keys()]
 
-
     def parse_word(self, word):
         """Parse word for single letters, doubles, and triplets."""
 
@@ -38,10 +37,10 @@ class FreqTable:
             self.singles[word[i]] += 1
 
             if i + 1 < l:
-                self.doubles[word[i:i+2]] += 1
+                self.doubles[word[i:i + 2]] += 1
 
-                if i + 2 < l: # Nest if since only valid if previous if is
-                    self.triples[word[i:i+3]] += 1
+                if i + 2 < l:  # Nest if since only valid if previous if is
+                    self.triples[word[i:i + 3]] += 1
 
     def calc_freq(self, key):
-        self.all[key] = (self.all[key], self.all[key]/self.total)
+        self.all[key] = (self.all[key], self.all[key] / self.total)
